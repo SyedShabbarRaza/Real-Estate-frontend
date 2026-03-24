@@ -1,14 +1,79 @@
-h1{
-    background-color:blueviolet;
+.header{
+        background-color:aliceblue;
 }
 
-.nav {
-    background-color:aliceblue;
+.navbar {
+    display: flex;
     flex-direction: row;
-    justify-content: center;
+    background-color:aliceblue;
     align-items: center;
-        
+    padding-right: 20px;
+    list-style-type: none;
 }
-.ul{
+.li{
+    padding: 20px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.title{
+    font-weight: bold;
+    text-decoration: solid;
+    font-size: 20px;
+}
 
+.first-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.logo-title{
+    display: flex;
+    align-items: center;
+}
+.onboarding{
+    padding: 20px;
+    background-color:  cadetblue;
+    height: 300px;
+
+}
+
+.paragraph{
+    width: 550px;
+    font-size: 18px;
+}
+
+.button{
+    background-color: #2c3e50;
+    font-weight: bold;
+    height: 45px;
+    width: 90px;
+    border-radius: 10px;
+    border-color: #2c3e50;
+}
+
+.property-card{
+    background-color: aliceblue;
+    width: 300px;
+}
+.property-grid{
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+gap: 1.5 rem;
+}
+
+
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.footer-content p {
+    margin: 0.3rem 0;
 }
