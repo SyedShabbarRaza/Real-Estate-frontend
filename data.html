@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Data</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: aliceblue;">
+    <header class="header">
+        <div class="first-div">
+            
+            <!-- LOGO-TITLE -->
+            <div class="logo-title">
+                <img src="/assets/logo.jpeg" alt="Logo" style="height: 80px;">
+                <span class="title">REAL ESTATE</span>
+            </div>
+
+            <!-- SearchBar -->
+
+        <div class="search-bar">
+            <input style="width: 300px; border-radius: 5px; height: 35px;" type="text" placeholder="Search by location or price...">
+            <button style="height: 35px; width: 35px;">🔍</button>
+        </div>
+
+        <!-- navbar -->
+    <nav>
+        <ul class="navbar">
+            <li class="li"><a href="/index.html">Home</a></li>
+            <li class="li"><a href="/best-selling">Best Selling</a></li>
+            <li class="li"><a href="/about">About</a></li>
+            <li class="li"><a href="/contact-us">Contact Us</a></li>
+        </ul>
+    </nav>
+
+
+        </div>
+        
+    </header>
+
+        <main style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+
+        <h1>Property Details</h1>
+        <div style="width: 250px; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+
+            <input type="text" placeholder="Title" style="padding: 10px; margin: 10px;">
+            <br>
+            <input type="text" placeholder="Description" style="padding: 10px; margin: 10px;">
+            <br>
+            <input type="number" placeholder="Rooms" style="padding: 10px; margin: 10px;">
+            <br>
+            <div style="display: flex; align-items: center;">
+                Rent
+                <input type="radio" id="Rent" style="padding: 10px; margin: 10px;">
+                Sale
+                <input type="radio" id="Sale" style="padding: 10px; margin: 10px;">
+                
+            </div>
+            <br>
+            <input type="text" placeholder="Enter Your Address" style="padding: 10px; margin: 10px;">
+            <br>
+            <input type="text" placeholder="Phone Number" style="padding: 10px; margin: 10px;">
+            <br>
+
+            Upload Images:
+            <div>
+                <input type="file" style="padding: 10px; margin: 10px;">
+            </div>
+        </div>
+<br>
+        <div>
+            <button class="button" style="margin-top: 5px;">
+                Publish
+            </button>
+        </div>
+
+    </main>
+
+</body>
+</html>
