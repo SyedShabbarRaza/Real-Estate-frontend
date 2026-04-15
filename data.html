@@ -12,8 +12,8 @@
             
             <!-- LOGO-TITLE -->
             <div class="logo-title">
-                <img src="/assets/logo.jpeg" alt="Logo" style="height: 80px;">
-                <a href="/index.html" class="title">REAL ESTATE</a>
+                <img src="assets/logo.jpeg" alt="Logo" style="height: 80px;">
+                <a href="index.html" class="title">REAL ESTATE</a>
             </div>
 
             <!-- SearchBar -->
@@ -41,38 +41,43 @@
         <main style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
 
         <h1>Property Details</h1>
-        <div style="width: 250px; display: flex; justify-content: center; flex-direction: column; align-items: center;">
-
-            <input type="text" placeholder="Title" style="padding: 10px; margin: 5px;">
+        <!-- <div style="width: 250px; display: flex; justify-content: center; flex-direction: column; align-items: center;"> -->
+    <form action="save_property.php" method="POST" enctype="multipart/form-data" style="width: 300px;">
+            <input type="text" placeholder="Title" name="title" style="padding: 10px; margin: 10px;">
             <br>
-            <input type="text" placeholder="Description" style="padding: 10px; margin: 10px;">
+        <textarea name="description" placeholder="Description" rows="4" required style="padding: 10px; margin: 10px; width: 60%;"></textarea>
             <br>
-            <input type="number" placeholder="Rooms" style="padding: 10px; margin: 10px;">
+            <input type="number" placeholder="Rooms" name="rooms" style="padding: 10px; margin: 10px;">
+            <br>
+            <input type="number" placeholder="Price" name="price" style="padding: 10px; margin: 10px;">
             <br>
             <div style="display: flex; align-items: center;">
-                Rent
-                <input type="radio" id="Rent" style="padding: 10px; margin: 10px;">
-                Sale
-                <input type="radio" id="Sale" style="padding: 10px; margin: 10px;">
+                <label> Rent</label>
+                <input type="radio" name="type" value="Rent" required style="padding: 10px; margin: 10px;">
+                <label> Sale</label>
+                <input type="radio" name="type" value="Sale" required style="padding: 10px; margin: 10px;">
                 
             </div>
             <br>
-            <input type="text" placeholder="Enter Your Address" style="padding: 10px; margin: 10px;">
+            <input type="text" placeholder="Enter Your Address" name="address" required style="padding: 10px; margin: 10px;">
             <br>
-            <input type="text" placeholder="Phone Number" style="padding: 10px; margin: 10px;">
+            <input type="text" placeholder="Phone Number" name="phone" required style="padding: 10px; margin: 10px;">
             <br>
+        <input type="email" name="email" placeholder="Your Email" required style="padding: 10px; margin: 10px; width: 60%;">
+        <br>
+
 
             Upload Images:
-            <div>
-                <input type="file" style="padding: 10px; margin: 10px;">
-            </div>
-        </div>
-<br>
-        <div>
-            <button class="button" style="margin-top: 5px;">
+                 <input type="file" name="image" accept="image/*" style="padding: 10px; margin: 10px;">
+            
+        <!-- </div> -->
+        <br>
+
+            <button type="submit" class="button">
                 Publish
             </button>
-        </div>
+
+    </form>
 
     </main>
 
