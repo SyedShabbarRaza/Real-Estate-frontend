@@ -27,15 +27,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $image_path = null;
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $upload_dir = 'uploads/';
-        // Create uploads folder if it doesn't exist
+        // Ensure directory exists
         if (!is_dir($upload_dir)) {
             mkdir($upload_dir, 0777, true);
         }
-        $file_extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-        $unique_name = uniqid() . '.' . $file_extension;
-        $destination = $upload_dir . $unique_name;
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {
-            $image_path = $destination;
+        $file_extension = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        if (in_array($file_extension, $allowed_extensions)) {
+            $unique_name = uniqid() . '.' . $file_extension;
+            $destination = $upload_dir . $unique_name;
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {
+                $image_path = $destination;
+            } else {
+                // Upload failed
+                $error = "Failed to move uploaded file.";
+            }
+        } else {
+            $error = "Invalid file type. Only JPG, PNG, GIF, WEBP allowed.";
         }
     }
 
