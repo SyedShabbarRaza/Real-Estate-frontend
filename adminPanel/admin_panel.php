@@ -46,8 +46,8 @@ $pending_properties = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <header class="header">
         <div class="first-div">
             <div class="logo-title">
-                <img src="../assets/logo.jpeg" alt="Logo" style="height: 80px;">
-                <a href="../index.html" class="title">REAL ESTATE</a>
+                <img src="../assets/logo.jpeg" alt="Logo" style="height: 80px;border-radius:45px"">
+                <a href="../index.php" class="title">REAL ESTATE</a>
             </div>
             <div class="search-bar">
                 <input style="width: 300px; border-radius: 5px; height: 35px;" type="text" placeholder="Search...">

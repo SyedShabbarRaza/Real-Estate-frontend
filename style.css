@@ -54,19 +54,34 @@ a{
     border-radius: 10px;
     border-color: #2c3e50;
 }
-
-.property-card{
-    background-color: aliceblue;
-    width: 300px;
-    border-radius: 12px;
+.link-button{
+    background-color: #287e39;
     padding: 10px;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    width: 90px;
+    border-radius: 5px;
+    border-color: #2c3e50;
+    
+}
+
+.property-card {
+     background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    max-height: max-content;
+    padding: 20px;
 }
 
 .property-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
 }
 
 .property-link {
@@ -74,11 +89,12 @@ a{
     color: inherit;
 }
 
-.property-grid{
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-gap: 1.5rem;
-}
+/* .property-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+} */
 
 .details-main {
     max-width: 1100px;
@@ -132,6 +148,12 @@ gap: 1.5rem;
     margin-bottom: 8px;
 }
 
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e67e22;
+    margin: 0.5rem 0;
+}
 .details-card {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -189,4 +211,62 @@ footer {
 
 .footer-content p {
     margin: 0.3rem 0;
+}
+
+
+/* Give the properties section proper spacing and centering */
+.properties {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Ensure all text inside cards wraps cleanly */
+.card-content {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Uniform text styling for rooms and contact lines */
+.card-content p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+/* Make the "Rooms" and "Contact" labels slightly lighter */
+.card-content p:last-of-type {
+    margin-bottom: 0;
+}
+
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .property-grid {
+        gap: 1rem;
+    }
+    .property-card img {
+        height: 180px;
+    }
+    .properties {
+        padding: 0.75rem;
+    }
+}
+
+/* Optional: Add a subtle background to the main area to separate cards */
+body {
+    background-color: #f4f4f4;
+}
+
+.properties {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.0rem;
+    margin-top: 1rem;
 }
