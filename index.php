@@ -25,31 +25,9 @@ $properties=$stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <!-- Header helps making SEO better. It gives primary info for search results -->
-<header class="header">
-        <div class="first-div">
-            <!-- LOGO-TITLE -->
-            <div class="logo-title">
-                <img src="assets/logo.jpeg" alt="Logo" style="height: 80px;border-radius:45px">
-                <a href="index.php" class="title">REAL ESTATE</a>
-            </div>
-            <!-- SearchBar -->
-        <div class="search-bar">
-            <input style="width: 300px; border-radius: 5px; height: 35px;" type="text" placeholder="Search by location or price...">
-            <button style="height: 35px; width: 35px;">🔍</button>
-        </div>
-        <!-- navbar -->
-    <nav>
-        <ul class="navbar">
-            <li class="li"><a href="index.php">Home</a></li>
-            <li class="li"><a href="about.html">About</a></li>
-            <li class="li"><a href="data.html">Publish</a></li>
-            <li class="li"><a href="contact-us.html">Contact Us</a></li>
-            <!-- <li class="li"><a href="login.html">Login</a></li> -->
-        </ul>
-    </nav>
-        </div>
-        
-    </header>
+<?php
+include "header.php";
+?>
 
 
   <main>
@@ -100,15 +78,9 @@ $properties=$stmt->fetchAll(PDO::FETCH_ASSOC);
     </section>
 </main>
 
-
-
-<footer>
-    <div class="footer-content">
-        <p>&copy; 2025 Real Estate Hub. All rights reserved.</p>
-        <p>Contact: info@realestatehub.com</p>
-    </div>
-</footer>
-
+<?php
+include "footer.php";
+?>
 
 </body>
 
