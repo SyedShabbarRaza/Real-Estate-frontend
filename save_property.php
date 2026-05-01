@@ -1,19 +1,9 @@
 <?php
-// Database connection settings
-$host = 'localhost';
-$dbname = 'real_estate_db';
-$username = 'root';
-$password = ''; // Leave empty if you have no MySQL password
+include "config.php";
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
 
 // Check if form was submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Kya form submit hua bhi hai ky nahi ?
     // Collect and sanitize input
     $title = htmlspecialchars(trim($_POST['title']));
     $description = htmlspecialchars(trim($_POST['description']));
@@ -49,25 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     
     $sql = "INSERT INTO property (title, description, rooms, type, address, phone, email, image_path) 
-            VALUES (:title, :description, :rooms, :type, :address, :phone, :email, :image_path)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        ':title' => $title,
-        ':description' => $description,
-        ':rooms' => $rooms,
-        ':type' => $type,
-        ':address' => $address,
-        ':phone' => $phone,
-        ':email' => $email,
-        ':image_path' => $image_path
-    ]);
+             VALUES ('$title', '$description', $rooms, '$type', '$address', '$phone', '$email', '$image_path')";
+    
+    if ($conn->query($sql) === TRUE) {
+        header("Location: data.php?success=1");
+        exit;
+    } else {
+        echo "Error: " . $conn->error;
+    }
 
-    // Redirect to a success page or back to the form with a message
-    header('Location: data.html?success=1');
-    exit;
 } else {
-    // If someone accesses this script directly without POST, redirect to form
-    header('Location: data.html');
+    //Aggar form submit nahi hua to wapas form page pe bhej do
+    header('Location: data.php');
     exit;
 }
 ?>

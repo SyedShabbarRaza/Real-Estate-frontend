@@ -1,16 +1,19 @@
 <?php
-$host='localhost';
-$dbname='real_estate_db';
-$username='root';
-$password='';
-
-
-$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",$username,$password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+include "config.php";
 
 //Only fetch the approved properties
-$stmt=$pdo->query("SELECT * FROM property WHERE status ='approved' ORDER BY created_at DESC");
-$properties=$stmt->fetchAll(PDO::FETCH_ASSOC);
+$sql="SELECT * FROM property WHERE status ='approved' ORDER BY created_at DESC";
+$result=$conn->query($sql);
+
+//result is not set of arrays it's just a pointer to db's results after query
+// now we have to seperate the rows from that poniter
+$properties=[];
+
+if($result->num_rows>0){
+    while($row= $result->fetch_assoc()){
+        $properties[]=$row;
+    }
+}
 ?>
 
 <!DOCTYPE html>

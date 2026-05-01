@@ -7,34 +7,41 @@ session_start();
 //     header('Location: admin_login.html');
 //     exit;
 // }
-
-$host = 'localhost';
-$dbname = 'real_estate_db';
-$username = 'root';
-$password = '';
-
-$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include "../config.php";
 
 // Handle approval or rejection
 if (isset($_GET['approve'])) {
     $id = (int)$_GET['approve'];
-    $stmt = $pdo->prepare("UPDATE property SET status = 'approved' WHERE id = ?");
-    $stmt->execute([$id]);
-    header('Location: admin_panel.php');
-    exit;
-}
-if (isset($_GET['reject'])) {
-    $id = (int)$_GET['reject'];
-    $stmt = $pdo->prepare("UPDATE property SET status = 'rejected' WHERE id = ?");
-    $stmt->execute([$id]);
+    $sql = "UPDATE property SET status='approved' WHERE id=$id";    
+    $conn->query($sql);
+    
     header('Location: admin_panel.php');
     exit;
 }
 
-// Fetch pending properties
-$stmt = $pdo->query("SELECT * FROM property WHERE status = 'pending' ORDER BY created_at DESC");
-$pending_properties = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// REJECT PROPERTY
+if (isset($_GET['reject'])) {
+    $id = (int)$_GET['reject'];
+
+    $sql = "UPDATE property SET status='rejected' WHERE id=$id";
+    $conn->query($sql);
+
+    header("Location: admin_panel.php");
+    exit;
+}
+
+// FETCH PENDING PROPERTIES
+$sql = "SELECT * FROM property WHERE status='pending' ORDER BY created_at DESC";
+$result = $conn->query($sql);
+
+$pending_properties = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $pending_properties[] = $row;
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,12 +91,8 @@ $pending_properties = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         <?php endif; ?>
     </main>
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Real Estate Hub. All rights reserved.</p>
-            <p>Contact: info@realestatehub.com</p>
-        </div>
-    </footer>
+<?php
+include "../footer.php";
+?>
 </body>
 </html>

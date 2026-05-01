@@ -1,28 +1,19 @@
 <?php
-// Database connection
-$host = 'localhost';
-$dbname = 'real_estate_db';
-$username = 'root';
-$password = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
+include "config.php";
 
 // Get the property ID from URL
-$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;//pehly humne id ko get kiya url se, aur usko integer me convert kiya. Aggar value aye to theek warna id=0
+
 
 if ($id <= 0) {
     die("Invalid property ID.");
 }
 
 // Fetch property details
-$stmt = $pdo->prepare("SELECT * FROM property WHERE id = ? AND status = 'approved'");
-$stmt->execute([$id]);
-$property = $stmt->fetch(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM property WHERE id = $id";
+$result=$conn->query($sql);
+
+$property = $result->fetch_assoc();
 
 if (!$property) {
     die("Property not found or not approved.");
